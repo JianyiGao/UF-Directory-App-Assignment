@@ -12,13 +12,20 @@
       <div class="row" ng-controller="ListingsController">
         <div class="col-md-6">
           <div class="input-group" id="searchBar">
-            <!-- 
+            <!--Finished
+                //To do: Seach by option
 
-                Implement a way to filter through listings using the search bar 
+                Implement a way to filter through listings using the search bar
 
               -->
+
             <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>
-            <input type="text" class="form-control" placeholder="Search">
+            <input type="text" class="form-control"  placeholder="Search" ng-model = "searchText">
+              <!-- <select ng-model = "searchList">
+                <option value = "code"> By code </option>
+                <option value = "name"> By code </option>
+              </select> -->
+
           </div>
           <div class="tableWrapper">
             <table class="table table-striped table-hover">
@@ -27,32 +34,71 @@
                 <th>Building Name</th>
                 <th></th>
               </tr>
-              <!-- 
+
+              <!-- Finished
 
                   Fill in the rest of the table:
                       * populate the rows with the code and name of each listing
                       * include a way to remove individual listings
 
-                --> 
+                -->
+                <!--Showing all rows with delete button, and remove row when button is clicked
+                    Note: track by needs to be at the end of the expression-->
+                <tr ng-repeat = "x in listings |filter: searchText track by $index" ng-click = "showDetails($index)" >
+                  <td> {{x.code}}</td>
+                  <td> {{x.name}}</td>
+                  <td>
+                    <button ng-click = "deleteListing($index)"> Delete </button>
+                  </td>
+                </tr>
             </table>
           </div>
-          <!-- 
+          <!-- Finished
 
-              Write an HTML form that adds new listings to the directory 
+              Write an HTML form that adds new listings to the directory
 
             -->
+            Code:
+              <input type = 'text' ng-model = "newCode" required>
+            Building name:
+              <input type = 'text' ng-model = "newBuildingName" required>
+            <!-- To do: Adding optional coordinates and address
+                        Limiting Code to three uppercase letters
+            -->
+            <!-- Detail:
+              <input type = 'text' ng-model = "newDetail"> -->
+            <button ng-click = 'addListing($index)'> Add </button>
         </div>
         <div class="col-md-6">
           <div class="jumbotron">
             <h2>Detailed Information</h2>
-            <!-- 
+            <!--
 
               Include a way to display detailed information about an individual listing:
                    * consider how to use ng-click within the the table to implement this feature
 
              -->
-          </div>
         </div>
+        <div class="tableWrapper">
+          <table class="table table-striped table-hover">
+            <tr>
+              <th>Code</th>
+                <td> {{code}} </td>
+            </tr>
+            <tr>
+              <th>Name</th>
+                <td> {{name}}</td>
+            </tr>
+            <tr>
+              <th>Coordinates</th>
+                <td> {{latitude}}</td>
+                <td> {{longitude}}</td>
+            </tr>
+            <tr>
+              <th>Address</th>
+                <td> {{address}}</td>
+            </tr>
+
       </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
