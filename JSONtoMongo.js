@@ -1,23 +1,39 @@
 'use strict';
-/* 
-  Import modules/files you may need to correctly run the script. 
+/*
+  Import modules/files you may need to correctly run the script.
   Make sure to save your DB's uri in the config file, then import it with a require statement!
  */
 var fs = require('fs'),
-    mongoose = require('mongoose'), 
-    Schema = mongoose.Schema, 
-    Listing = require('./ListingSchema.js'), 
+    mongoose = require('mongoose'),
+    Schema = mongoose.Schema,
+    Listing = require('./ListingSchema.js'),
     config = require('./config');
 
+var generator = require('mongoose-gen');
+
 /* Connect to your database */
-
-/* 
-  Instantiate a mongoose model for each listing object in the JSON file, 
-  and then save it to your Mongo database 
+mongoose.connect('mongodb://JianyiGao:awesome5@ds159493.mlab.com:59493/bootcamp')
+/*
+  Instantiate a mongoose model for each listing object in the JSON file,
+  and then save it to your Mongo database
  */
+var data = fs.readFileSync('./listings.json', {encoding: 'utf8'});
+var listingData = JSON.parse(data);
+//console.log(listingData);
+//
+var newListing = new Listing(listingData);
+console.log(newListing);
+newListing.save(function(error){
+   if (error){
+     console.log("Error")
+     throw error;
+   }
+   console.log('listing created');
+
+});
 
 
-/* 
-  Once you've written + run the script, check out your MongoLab database to ensure that 
-  it saved everything correctly. 
+/*
+  Once you've written + run the script, check out your MongoLab database to ensure that
+  it saved everything correctly.
  */
