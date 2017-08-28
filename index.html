@@ -1,30 +1,63 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
   </head>
   <body ng-app="directoryApp">
     <div class="container">
-      <div class="row">
+
+      <div class="container">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+
+      <div class="item active">
+        <img src="http://institutes.ufl.edu/media/ufledu/content-assets/generalcounselufledu/images/CS_CenturyTower071_RC-680x220.jpg" alt="Century Tower" style="height: 300px; width: 100%">
+      </div>
+
+      <div class="item">
+        <img src="https://az616578.vo.msecnd.net/files/2016/09/23/636102480987307012782782658_stadiumm.jpg" alt="Stadium" style="height: 300px; width:100%;">
+      </div>
+
+      <div class="item">
+        <img = src="https://cdn2.hercampus.com/2016/01/21/UFL-Banner.jpg" alt="Go Gators" style="height: 300px; width:100%;">
+      </div>
+
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+      <div class="page-header">
         <h1>UF Directory App</h1>
+
       </div>
       <div class="row" ng-controller="ListingsController">
         <div class="col-md-6">
           <div class="input-group" id="searchBar">
             <!--Finished
                 //To do: Seach by option
-
                 Implement a way to filter through listings using the search bar
-
               -->
 
             <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>
             <input type="text" class="form-control"  placeholder="Search" ng-model = "searchText">
-              <!-- <select ng-model = "searchList">
-                <option value = "code"> By code </option>
-                <option value = "name"> By code </option>
-              </select> -->
 
           </div>
           <div class="tableWrapper">
@@ -36,11 +69,9 @@
               </tr>
 
               <!-- Finished
-
                   Fill in the rest of the table:
                       * populate the rows with the code and name of each listing
                       * include a way to remove individual listings
-
                 -->
                 <!--Showing all rows with delete button, and remove row when button is clicked
                     Note: track by needs to be at the end of the expression-->
@@ -48,39 +79,25 @@
                   <td> {{x.code}}</td>
                   <td> {{x.name}}</td>
                   <td>
-                    <button ng-click = "deleteListing($index)"> Delete </button>
+                    <button type = "button" class = "btn btn-warning" ng-click = "deleteListing($index)"> Delete </button>
                   </td>
                 </tr>
             </table>
           </div>
           <!-- Finished
-
               Write an HTML form that adds new listings to the directory
-
             -->
-            Code:
-              <input type = 'text' ng-model = "newCode" required>
-            Building name:
-              <input type = 'text' ng-model = "newBuildingName" required>
-            <!-- To do: Adding optional coordinates and address
-                        Limiting Code to three uppercase letters
-            -->
-            <!-- Detail:
-              <input type = 'text' ng-model = "newDetail"> -->
-            <button ng-click = 'addListing($index)'> Add </button>
-        </div>
+          </div>
         <div class="col-md-6">
           <div class="jumbotron">
             <h2>Detailed Information</h2>
             <!--
-
               Include a way to display detailed information about an individual listing:
                    * consider how to use ng-click within the the table to implement this feature
-
              -->
         </div>
         <div class="tableWrapper">
-          <table class="table table-striped table-hover">
+         <table class="table table-bordered">
             <tr>
               <th>Code</th>
                 <td> {{code}} </td>
@@ -91,16 +108,26 @@
             </tr>
             <tr>
               <th>Coordinates</th>
-                <td> {{latitude}}</td>
-                <td> {{longitude}}</td>
+                <td> {{latitude}}{{longitude}}</td>
             </tr>
             <tr>
               <th>Address</th>
                 <td> {{address}}</td>
             </tr>
-
+          </table>
       </div>
+      Code:
+        <input type = 'text' ng-model = "newCode" required>
+      Building name:
+        <input type = 'text' ng-model = "newBuildingName" required>
+      <!-- To do: Adding optional coordinates and address
+                  Limiting Code to three uppercase letters
+      -->
+      <!-- Detail:
+        <input type = 'text' ng-model = "newDetail"> -->
+      <button type = "button" class = "btn btn-success" ng-click = 'addListing($index)'> Add </button>
     </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
     <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
