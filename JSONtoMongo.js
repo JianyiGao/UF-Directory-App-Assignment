@@ -9,7 +9,7 @@ var fs = require('fs'),
     Listing = require('./ListingSchema.js'),
     config = require('./config');
 
-var generator = require('mongoose-gen');
+// var generator = require('mongoose-gen');
 
 /* Connect to your database */
 mongoose.connect('mongodb://JianyiGao:awesome5@ds159493.mlab.com:59493/bootcamp')
@@ -18,19 +18,22 @@ mongoose.connect('mongodb://JianyiGao:awesome5@ds159493.mlab.com:59493/bootcamp'
   and then save it to your Mongo database
  */
 var data = fs.readFileSync('./listings.json', {encoding: 'utf8'});
-var listingData = JSON.parse(data);
+var listingData = JSON.parse(data).entries;
 //console.log(listingData);
 //
-var newListing = new Listing(listingData);
-console.log(newListing);
-newListing.save(function(error){
-   if (error){
-     console.log("Error")
-     throw error;
-   }
+listingData.forEach(function(listing){
+  let newListing = new Listing(listing);
+  newListing.save(function(error){
+    if (error){
+      console.log("Error")
+      throw error;
+    }
+  });
    console.log('listing created');
-
 });
+
+
+
 
 
 /*
