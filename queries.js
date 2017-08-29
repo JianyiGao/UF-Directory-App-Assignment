@@ -4,7 +4,8 @@ var Listing =  require('./ListingSchema.js'),
       Schema = mongoose.Schema,
       config = require('./config');
 
-mongoose.connect('mongodb://JianyiGao:awesome5@ds159493.mlab.com:59493/bootcamp')
+var dbURI = config.db.uri;
+    mongoose.connect(dbURI);
 
 
 var findLibraryWest = function() {

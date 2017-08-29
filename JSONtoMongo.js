@@ -12,7 +12,8 @@ var fs = require('fs'),
 // var generator = require('mongoose-gen');
 
 /* Connect to your database */
-mongoose.connect('mongodb://JianyiGao:awesome5@ds159493.mlab.com:59493/bootcamp')
+var dbURI = config.db.uri;
+mongoose.connect(dbURI);
 /*
   Instantiate a mongoose model for each listing object in the JSON file,
   and then save it to your Mongo database
