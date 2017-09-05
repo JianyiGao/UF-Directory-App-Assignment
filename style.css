@@ -1,8 +1,41 @@
+body{
+  background: rgb(255, 255, 255); /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(rgba(106, 162, 240, 0.44), rgb(255, 255, 255)); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(rgba(106, 162, 240, 0.44)), rgb(255, 255, 255)); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(rgba(106, 162, 240, 0.44)), rgb(255, 255, 255)); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(rgba(106, 162, 240, 0.44), rgb(255, 255, 255)); /* Standard syntax (must be last) */
+}
+
+.page-header{
+    font-family: "Times New Roman", serif;
+}
+
 #searchBar {
   margin: 15px 10px;
 }
 
+.display-5{
+  font-family: "TimesNew Roman", serif;
+  font-size: 30px;
+}
+
 .tableWrapper {
-  max-height: 350px;
+  max-height: 310px;
   overflow: auto;
+  padding-bottom: 20px;
+  font-family: "TimesNew Roman", serif;
+  font-size: 15px;
+}
+
+
+.Add {
+  padding-bottom: 5px;
+  font-family: "TimesNew Roman", serif;
+  font-size: 30px;
+}
+
+.submit {
+  padding-bottom: 20px;
+  font-family: "TimesNew Roman", serif;
+  font-size: 20px;
 }

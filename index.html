@@ -61,6 +61,7 @@
 
               <select type = "button" class = "btn btn-info dropdown-toggle" data-toggle = "dropdown"  aria-haspopup="true" aria-expanded="false" ng-model = "searchSelect" >
               <div class = "caret"> </div>
+                <option value = "" disabled selected> Options </option>
                 <option value = "code">Code</option>
                 <option value = "name">Building Name</option>
               </select>
@@ -81,9 +82,9 @@
                 -->
                 <!--Showing all rows with delete button, and remove row when button is clicked
                     Note: track by needs to be at the end of the expression-->
-                <tr ng-repeat = "x in listings |filter: searchText track by $index" ng-click = "showDetails(x)" >
-                  <td> {{x.code}}</td>
-                  <td> {{x.name}}</td>
+                <tr ng-repeat = "x in listings |filter: searchText track by $index">
+                  <td  ng-click = "showDetails(x)"> {{x.code}}</td>
+                  <td  ng-click = "showDetails(x)"> {{x.name}}</td>
                   <td>
                     <button type = "button" class = "btn btn-warning" ng-click = "deleteListing(x)"> Delete </button>
                   </td>
@@ -93,7 +94,6 @@
           <!-- Finished
               Write an HTML form that adds new listings to the directory
             -->
-              <div class = "page-header"> </div>
           </div>
         <div class="col-md-6">
           <div class="display-5">
@@ -123,21 +123,22 @@
             </tr>
           </table>
       </div>
-      <div style="display:flex">
+      <div class = "submit">
+      <div style="display:flex" class = "Add">
       <h5 style = "padding-bottom: 10px">Code:</h5>
         <input style = "width: 150px; margin-left: 10px; margin-right: 10px" class = "form-control mb-2 mr-sm-2 mb-sm-0" type = 'text'  ng-model = "newCode" placeholder="AAA" required>
       <h5 style = "padding-bottom: 10px">Building name:</h5>
         <input style = "width: 230px; margin-left: 10px"class = "form-control mb-2 mr-sm-2 mb-sm-0" type = 'text' ng-model = "newBuildingName" placeholder = "Awesome Apple Auditorium" required>
       </div>
-      <div style="display:flex">
+      <div style="display:flex" class = "Add">
         <h5 style = "padding-bottom: 10px">Latitude:</h5>
         <input style = "width: 200; margin-left: 10px; margin-right: 10px"class = "form-control mb-2 mr-sm-2 mb-sm-0" type = 'text' ng-model = "newLatitude" placeholder="####.##">
         <h5 style = "padding-bottom: 10px">Longitude:</h5>
         <input style = "width: 200px; margin-left: 10px; margin-right: 10px"class = "form-control mb-2 mr-sm-2 mb-sm-0" type = 'text' ng-model = 'newLongitude' placeholder="####.##">
       </div>
-      <div style="display:flex">
+      <div style="display:flex" class = "Add">
         <h5>Address:</h5>
-        <input style = "width: 450px; margin-left: 10px; margin-right: 10px"class = "form-control mb-2 mr-sm-2 mb-sm-0" type = 'text' ng-model = "newAddress" placeholder = "1024 Newton Road, Utopia, JS">
+        <input style = "width: 450px; margin-left: 10px; margin-right: 10px"class = "form-control mb-2 mr-sm-2 mb-sm-0" type = 'text' ng-model = "newAddress" placeholder = "1024 Angular Road, Utopia, JS">
       <!-- To do: Adding optional coordinates and address
                   Limiting Code to three uppercase letters
       -->
@@ -145,7 +146,6 @@
         <input type = 'text' ng-model = "newDetail"> -->
       <button type = "button" class = "btn btn-success" ng-click = 'addListing()'> Add </button>
   </div>
-<div class = "page-header"> </div>
     </div>
 
 
